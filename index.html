@@ -7,13 +7,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Spline+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     spacing:{
+                        16:'16px',
                         17:'17px',
+                        26:'26px',
                         30:'30px',
                         34:'34px',
                         42:'42px',
@@ -43,12 +47,14 @@
                         188:'188px',
                         191:'191px',
                         200:'200px',
+                        234:'234px',
                         245:'245px',
                         270:'270px',
                         292:'292px',
                         300:'300px',
                         308:'308px',
                         336:'336px',
+                        350:'350px',
                         358:'358px',
                         372:'372px',
                         379:'379px',
@@ -73,19 +79,37 @@
                     },
                     fontSize: {
                         'lg':'40px',
+                    },
+                    container: {
+                        center: true,
+                        screens: {
+                            sm: '600px',
+                            md: '728px',
+                            lg: '984px',
+                            xl: '1140px',
+                            '2xl': '1200px',
+                        },
+                    },
+                    gridTemplateColumns:{
+                        16: 'repeat(16, minmax(0, 1fr))',
+                        
                     }
-
-                },
-                
+                },             
             }
         }
     </script>
     <title>Document</title>
 </head>
 <style>
-    body {
+    html,body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
         font-family: 'Quicksand', sans-serif;
         font-family: 'Spline Sans', sans-serif;
+        max-width: 100%;
+        overflow-x: hidden;
     }
     h4::first-letter {
         font-weight: 700;
@@ -97,13 +121,35 @@
 <body>
     <div >
         <!-- Top Menu -->
-        <div class=" max-w-[1200px] mx-auto h-34 flex items-center mt-42 mb-10 lt-space">
-            <!-- Brand -->
-            <div class="flex-grow h-34 ">
+        <div class="container h-34 flex items-center mt-42 lg:mb-10 lt-space">
+            <!-- Mobile menu button -->
+            <div class="lg:hidden flex flex-grow items-center">
+                <button class=" outline-none mobile-menu-button">
+                    <svg
+                        class="w-7 h-7 text-gray-500"
+                        x-show="!showMenu"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                    <path d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <ion-icon class="close-icon hidden lg:hidden close-btn w-7 h-7" name="close-outline"></ion-icon>
+            </div>
+              <!-- Brand-Desktop -->
+            <div class="lg:hidden mx-auto">
+                <h4 class="text-3xl lg:text-2xl">A+ Studio</h4>
+            </div>
+            <!-- Brand-Desktop -->
+            <div class="hidden lg:block flex-grow h-34 ">
                 <h4 class="text-2xl">A+ Studio</h4>
             </div>
             <!-- Menu-Desktop -->
-            <div class="">
+            <div class="hidden lg:block">
                 <ul class="flex ">
                     <li class="pr-60 "><a class="text-base " href="">Home</a></li>
                     <li class="pr-60 "><a class="text-base" href="">What We Do</a></li>
@@ -114,171 +160,189 @@
                 </ul>
             </div>
         </div>
+      
+        <!-- Mobile-menu -->
+        <div "  class="hidden mobile-menu shadow-lg ">
+            <ul class="">
+                <li class="active"><a href="index.html" class="block text-sm px-2 py-4 text-black hover:bg-[#2639ED] hover:text-white font-semibold">Home</a></li>
+                <li><a href="#" class="block text-sm px-2 py-4 hover:bg-[#2639ED] transition hover:text-white font-semibold">What We Do</a></li>
+                <li><a href="#" class="block text-sm px-2 py-4 hover:bg-[#2639ED] transition hover:text-white font-semibold">Service</a></li>
+                <li><a href="#" class="block text-sm px-2 py-4 hover:bg-[#2639ED] transition hover:text-white font-semibold">Blog</a></li>
+                <li><a href="#" class="block text-sm px-2 py-4 hover:bg-[#2639ED] transition hover:text-white font-semibold">Contact</a></li>
+
+            </ul>
+        </div>
         <!-- Hero Headline -->
-        <div class=" flex mb-10">
+        <div class="container flex mb-10">
              <!-- Headline Left -->
-            <div class="max-w-[1200px] ml-158 mr-auto">
+            <div class="w-1/2">
                  <!-- Content -->
-                <div class="w-471 mt-88">
-                    <div class="mb-10">
-                        <h1 class="font-bold text-lg">A Digital Product Agency</h1>
+                <div class="pl-5 lg:px-0 w-471 lg:mt-88 mt-60">
+                    <div class="mb-3 md:mb-10">
+                        <h1 class="font-bold text-3xl md:text-lg">A Digital Product Agency</h1>
                     </div>
                     <div class="mb-63">
-                        <p class="text-base text-tgray">Leading digital agency with solid design and development expertise. We build readymade websites, mobile applications, and elaborate online business services.</p>
+                        <p class="w-300 md:w-full text-sm md:text-base text-tgray">Leading digital agency with solid design and development expertise. We build readymade websites, mobile applications, and elaborate online business services.</p>
                     </div>
                 </div>
                 <!-- Dot Ornament -->
-                <div class="relative " >
+                <div class="pl-5 md:px-0 relative " >
                     <img src="./images/img-headline/img-headline-1.png" alt="">
                     <div class="absolute -top-7 flex items-center justify-center w-[215px] h-[65px] bg-[#2639ED] rounded-[60px] lt-space">
-                        <p class="text-white text-xl">Contact Now</p>
+                        <p class="text-white text-xl font-bold lg:font-normal">Contact Now</p>
                     </div>
                 </div>
+            </div>
+            
             </div>
             <!-- Headline Right -->
-                <div class="w-1/2 ">
-                    <div class="relative">
-                        <div class="">
-                            <img src="./images/img-headline/img-headline.png" alt="" class="w-full h-full object-cover">
-                        </div>
-                        <div style="z-index: -1;" class="absolute -bottom-20 right-0 mr-120 w-44 h-44">
-                            <img src="./images/img-headline/img-headline-3.png" alt="">
-                        </div>
-                        <div style="z-index: -1;" class="absolute top-0 -left-12">
-                            <img src="./images/img-headline/img-headline-4.png"
-                            alt=""
-                            class="w-32 h-32">
-                        </div>                                   
-                    </div>
-                    
+            <div class="absolute lg:top-0 lg:mt-120 lg:ml-[50%] ">
+            <div class="relative">
+                <div class="">
+                    <img src="./images/img-headline/img-headline.png" alt="" class="w-full h-full object-cover">
                 </div>
-            
+                <div style="z-index: -1;" class="hidden lg:block absolute -bottom-20 right-0 mr-120 w-44 h-44">
+                    <img src="./images/img-headline/img-headline-3.png" alt="">
+                </div>
+                <div style="z-index: -1;" class="hidden lg:block absolute top-0 -left-12">
+                    <img src="./images/img-headline/img-headline-4.png"
+                    alt=""
+                    class="w-32 h-32">
+                </div>                                   
+            </div>
         </div>
         <!-- Our Client -->
-        <div class="max-w-[1200px] mx-auto mb-94">
-            <div class="mb-17">
-                <p class="font-bold text-lg">Our Client</p>
+        <div class="pl-5 lg:px-0 container mt-[70%] lg:mt-0 text-center lg:text-left">
+            <div class="mb-3 md:mb-17">
+                <p class="font-bold text-3xl md:text-lg">Our Client</p>
             </div>
-            <div class="flex items-center">
-                <div class="flex-grow w-336 mr-60">
+            <div class="lg:flex lg:items-center ">
+                <div class="lg:flex-grow lg:w-336 lg:mr-60 mx-auto">
                     <p class="text-tgray font-normal">Several selected clients, who already believe in our service.</p>
                 </div>
-                <div class="w-150 h-12 mr-60">
-                    <img src="./images/img-our-client/img-google.png"
-                    alt="">
-                </div>
-                <div class="w-163 h-52 mr-60">
-                    <img src="./images/img-our-client/logo-airbnb.png" alt="">
-                </div>
-                <div class="w-163 h-7 mr-60">
-                    <img src="./images/img-our-client/logo-uber-eats.png" alt="">
-                </div>
-                <div class="w-142 h-42">
-                    <img src="./images/img-our-client/logo-amazon.png" alt="">
+                <div  class="grid grid-cols-2 md:grid-cols-4 lg:flex mt-30 lg:mt-0"> 
+                    <div class="justify-self-center w-101 lg:w-150 h-12 lg:mr-60">
+                        <img src="./images/img-our-client/img-google.png"
+                        alt="">
+                    </div>
+                    <div class="justify-self-center w-101 lg:w-163 h-52 lg:mr-60">
+                        <img src="./images/img-our-client/logo-airbnb.png" alt="">
+                    </div>
+                    <div class="justify-self-center w-101 lg:w-163 h-7 lg:mr-60">
+                        <img src="./images/img-our-client/logo-uber-eats.png" alt="">
+                    </div>
+                    <div class="justify-self-center w-101 lg:w-142 h-42">
+                        <img src="./images/img-our-client/logo-amazon.png" alt="">
+                    </div>
+
                 </div>
             </div>
         </div>
         <!-- How can we help -->
-        <div class="flex max-w-[1200px] mx-auto">
-            <div class=" flex-grow">
-                <div class="relative">
-                    <div class=" w-178 h-178 mt-300">
-                        <img src="./images/img-how-can-we-help/img-rectangle.png" alt="">
-                    </div>
-                    <div class="absolute top-12 ml-10 ">
-                        <p class="text-lg w-358 font-bold mb-6">How can we help your Business ?</p>
-                        <div class="w-396">
-                            <span class="text-tgray">We build readymade websites, mobile applications, and elaborate online business services.</span>
+        <div class="relative">
+            <div class="relative flex flex-col lg:flex-row container ">
+                <div class="pl-5 lg:pl-0 flex-grow lg:w-1/5">
+                    <div class="mt-71 lg:mt-300">
+                        <div class= "pl-10 pt-10" style="background-image: url(./images/img-how-can-we-help/img-rectangle.png);background-size: 178px; background-repeat: no-repeat;object-fit: cover;">
+                            <div class=>
+                                <p class="text-lg font-bold w-358 mb-6">How can we help your Business ? </p>
+                                <div class="lg:w-396 ">
+                                    <span class="text-tgray text-base">We build readymade websites, mobile applications, and elaborate online business services</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div style="position: absolute; z-index: -2;" class="ml-30 mt-245">
+                        <img src="./images/img-how-can-we-help/img-dot.png" alt="">
+                    </div>
                 </div>
-                <div style="position: absolute; z-index: -2;" class="ml-30 mt-166">
-                    <img src="./images/img-how-can-we-help/img-dot.png" alt="">
+             
+                <div class="lg:mt-234 md:mt-71 md:mb-71 ">
+                    <div class=" grid gap-y-30 lg:gap-y-0 lg:ml-101 md:grid-cols-2 md:gap-x-34  lg:-mt-142">
+                        <!-- col-1 -->
+                            <!-- box-1 -->
+                            <div class="justify-self-center mt-78 grid gap-y-30">
+                                <div class="lg:pt-30 w-308 h-379 bg-white rounded-[40px] border  border-[#F2F2F2] shadow-lg">
+                                    <div class="w-120 h-120 bg-[#F1F7FF] rounded-[20px] mx-auto flex items-center justify-center">
+                                        <div class="w-74 h-74">
+                                            <img src="./images/img-how-can-we-help/img-box-search.png"
+                                             alt=""
+                                             class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col items-center justify-center">
+                                        <p class="w-166 text-2xl font-bold pt-30 text-center">Business Idea Planning</p>
+                                        <span class="w-245 text-tgray text-center pt-7">We present you a proposal and discuss niffty-gritty like</span>
+                                    </div>
+                                </div>
+                                <!-- box-2 -->
+                                <div class=" w-308 h-379 bg-white rounded-[40px] border border-[#F2F2F2] shadow-lg ">
+                                    <div class="w-120 h-120 bg-[#FFF2F8] rounded-[20px] mx-auto flex items-center justify-center">
+                                        <div class="w-74 h-74">
+                                            <img src="./images/img-how-can-we-help/img-code.png"
+                                             alt=""
+                                             class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col items-center justify-center">
+                                        <p class="w-183 text-2xl font-bold pt-30 text-center">Development Website and App</p>
+                                        <span class="w-245 text-tgray text-center pt-7">Communication protocols apart from engagement models</span>
+                                    </div>
+                                </div>
+                            </div>
+                      
+                        <!-- col-2 -->
+                        <div class="justify-self-center grid gap-y-30 mb-78">
+                            <div class=" w-308 h-379 bg-white rounded-[40px] border  border-[#F2F2F2]  shadow-lg">
+                                    <div class="w-120 h-120 bg-[#FFF7E3] rounded-[20px] mx-auto flex items-center justify-center">
+                                        <div class="w-74 h-74">
+                                            <img src="./images/img-how-can-we-help/img-wallet.png"
+                                             alt=""
+                                             class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col items-center justify-center">
+                                        <p class="w-183 text-2xl font-bold pt-30 text-center">Financial Planning System</p>
+                                        <span class="w-245 text-tgray text-center pt-7">Protocols apart from aengage models, pricing billing</span>
+                                    </div>
+                            </div>
+                            <!-- box-4 -->
+                            <div class="w-308 h-379 bg-white rounded-[40px] border  border-[#F2F2F2]  shadow-lg">
+                                    <div class="w-120 h-120 bg-[#DEFFEE] rounded-[20px] mx-auto flex items-center justify-center">
+                                        <div class="w-74 h-74">
+                                            <img src="./images/img-how-can-we-help/img-chart-square.png"
+                                             alt=""
+                                             class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-col items-center justify-center">
+                                        <p class="w-183 text-2xl font-bold pt-30 text-center">Market Analysis Project</p>
+                                        <span class="w-245 text-tgray text-center pt-7">Protocols apart from aengage models, pricing billing</span>
+                                    </div>
+                            </div>
+        
+                        </div>
+                            <!-- box-3 -->
+                        
+                    </div>
+    
                 </div>
+                
             </div>
-            <div style="z-index: -1;" class=" ml-[20%] absolute mt-142">
+            
+            <div style="z-index: -1;" class="hidden lg:block absolute top-0 ml-[35%]  mt-245">
                 <img src="./images/img-how-can-we-help/img-rectangle-2.png"
                 alt=""
                 class="w-full h-full object-cover">
-                <div style="margin-top: -53px; z-index: -3;" class="absolute w-120 h-120 left-[72%]">
-                    <img src="./images/img-how-can-we-help/img-ellipse.png" alt="">
-                </div>
             </div>
-            <div class="grid grid-cols-2 gap-x-34 mr-60 ">
-                <!-- col-1 -->
-                <div class="mb-36">
-                    <!-- box-1 -->
-                    <div class=" mt-20 mb-30 w-308 h-379 bg-white rounded-[40px] border  border-[#F2F2F2] pt-10 shadow-lg">
-                        <div class="w-120 h-120 bg-[#F1F7FF] rounded-[20px] mx-auto flex items-center justify-center">
-                            <div class="w-74 h-74">
-                                <img src="./images/img-how-can-we-help/img-box-search.png"
-                                 alt=""
-                                 class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                        <div class="flex flex-col items-center justify-center">
-                            <p class="w-166 text-2xl font-bold pt-30 text-center">Business Idea Planning</p>
-                            <span class="w-245 text-tgray text-center pt-7">We present you a proposal and discuss niffty-gritty like</span>
-                        </div>
-                    </div>
-                    <!-- box-2 -->
-                    <div class=" w-308 h-379 bg-white rounded-[40px] border border-[#F2F2F2] pt-10 shadow-lg ">
-                        <div class="w-120 h-120 bg-[#FFF2F8] rounded-[20px] mx-auto flex items-center justify-center">
-                            <div class="w-74 h-74">
-                                <img src="./images/img-how-can-we-help/img-code.png"
-                                 alt=""
-                                 class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                        <div class="flex flex-col items-center justify-center">
-                            <p class="w-183 text-2xl font-bold pt-30 text-center">Development Website and App</p>
-                            <span class="w-245 text-tgray text-center pt-7">Communication protocols apart from engagement models</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- col-2 -->
-                <div">
-                    <!-- box-3 -->
-                    <div class="mb-30 w-308 h-379 bg-white rounded-[40px] border  border-[#F2F2F2] pt-10 shadow-lg">
-                        <div class="w-120 h-120 bg-[#FFF7E3] rounded-[20px] mx-auto flex items-center justify-center">
-                            <div class="w-74 h-74">
-                                <img src="./images/img-how-can-we-help/img-wallet.png"
-                                 alt=""
-                                 class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                        <div class="flex flex-col items-center justify-center">
-                            <p class="w-183 text-2xl font-bold pt-30 text-center">Financial Planning System</p>
-                            <span class="w-245 text-tgray text-center pt-7">Protocols apart from aengage models, pricing billing</span>
-                        </div>
-                    </div>
-                    <!-- box-4 -->
-                    <div class="w-308 h-379 bg-white rounded-[40px] border  border-[#F2F2F2] pt-10 shadow-lg">
-                        <div class="w-120 h-120 bg-[#DEFFEE] rounded-[20px] mx-auto flex items-center justify-center">
-                            <div class="w-74 h-74">
-                                <img src="./images/img-how-can-we-help/img-chart-square.png"
-                                 alt=""
-                                 class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                        <div class="flex flex-col items-center justify-center">
-                            <p class="w-183 text-2xl font-bold pt-30 text-center">Market Analysis Project</p>
-                            <span class="w-245 text-tgray text-center pt-7">Protocols apart from aengage models, pricing billing</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-                
         </div>
-        
         <!--Great Since  -->
-        <div class="flex items-center max-w-[1200px] mx-auto mb-117">
-            <div class="relative flex justify-center items-center w-550 h-372">
+        <div class="flex flex-col lg:flex-row container lg:items-center mb-71 lg:mb-117 ">
+            <div class="order-2 lg:order-1 relative flex justify-center items-center">
                 <img src="./images/img-great-since/img-teamwork.png"
                  alt=""
                  class="w-full h-full object-cover">
-                 <div class="absolute bottom-[160px] w-78 h-78">
+                 <div class="absolute w-78 h-78">
                      <img src="./images/img-great-since/img-button-2.jpg"
                      alt="" 
                      class="w-full h-full object-cover">
@@ -287,37 +351,30 @@
                     <img src="./images/img-great-since/img-ellipse.png" alt="">
                 </div>
             </div>
-        
-            <div class="relative flex-grow ml-6">
-                <div class="w-178 h-178" >
-                    <img src="./images/img-great-since/img-rectangle.png"
-                    alt=""
-                    class="w-full h-full object-cover">
-                </div>
-                <div>
-                    <div class= "pl-8 pt-3">
-                        <p class="absolute top-0 text-lg font-bold w-[468px]">Great Digital Product Agency since 2016 </p>
-                    </div>
-                    <div class="w-533 h-104 pl-8 -mt-10">
-                        <span class="text-tgray text-base">Our Business Plan is a written document describing a company's core business activites, Objectives, and how it plans to achieve its goals. Our goal is to provide our client high quality Product with modern idea accordingly their budgets and according thir reuirements.</span>
+            <div class="order-1 mb-71 md:mb-0 lg:order-2 ml-6 lg:mb-101">
+                <div class= "pl-4 lg:pl-8 pt-3" style="background-image: url(./images/img-great-since/img-rectangle.png);;height: 178px;background-size: 178px; background-repeat: no-repeat;">
+                    <p class=" text-3xl lg:text-lg font-bold lg:w-[468px]">Great Digital Product Agency since 2016 </p>
+                    <div class="lg:w-533 mt-17 ">
+                        <span class="text-sm  text-tgray lg:text-base">Our Business Plan is a written document describing a company's core business activites, Objectives, and how it plans to achieve its goals. Our goal is to provide our client high quality Product with modern idea accordingly their budgets and according thir reuirements.</span>
                     </div>
                 </div>
             </div>
+           
             
         </div>
         <!-- Happy Client -->
-        <div class="max-w-[1200px] mx-auto mb-150 ">
-            <div class="mb-88 text-center">
-                <p class="text-lg font-bold mb-4">What our happy client say</p>
-                <span class="text-tgray text-base">Several selected clients, who already believe in our service.</span>
+        <div class="container mb-71 lg:mb-150 ">
+            <div class="mb-71 lg:mb-88 text-center">
+                <p class="text-3xl lg:text-lg font-bold mb-3 lg:mb-4">What our happy client say</p>
+                <span class="text-sm text-tgray lg:text-base">Several selected clients, who already believe in our service.</span>
             </div>
 
-            <div class="flex items-center">
-                <div class=" relative w-389 h-389">
+            <div class="flex flex-col md:grid md:grid-cols-2 lg:flex lg:flex-row items-center">
+                <div class=" relative w-389 h-389 mb-3 md:justify-self-center lg:mb-0">
                     <img src="./images/img-happy-client/img-happy-client.png"
                     alt=""
                     class="w-full h-full object-cover">
-                    <div style="z-index: -1;" class="absolute bottom-16  w-120 h-120">
+                    <div style="z-index: -1;" class="absolute bottom-16 pl-5 lg:pl-0 w-120 h-120">
                         <img src="./images/img-happy-client/img-ellipse.png" alt="">
                     </div>
                     <div style="z-index: -1;" class="absolute top-0 right-0 w-48 h-150">
@@ -325,16 +382,22 @@
                     </div>
                 </div>
               
-                <div class="pl-8 pr-7">
-                    <img src="./images/img-happy-client/Group 72.png" alt="" class="w-full h-full object-cover">
-                    <!-- <p class="text-2xl font-bold">Matthew Paul</p>
-                    <div class="w-412">
-                        <span class="text-tgray">Perfect, very good job! Thank you for the amazing design and work. Really impressed with the high quality and quick turnaround time. Highly recommend.</span>
-                    </div> -->
+                <div class="pl-5 lg:pl-8 lg:pr-7">
+                    
+                    <p class="text-2xl font-bold pb-3 lg:pb-5">Matthew Paul</p>
+                    <div class="w-[350px] md:w-412">
+                        <span class="text-sm text-tgray lg:text-base">Perfect, very good job! Thank you for the amazing design and work. Really impressed with the high quality and quick turnaround time. Highly recommend.</span>
+                    </div>
+                    <div class="pt-3 lg:pt-10 flex gap-26">
+                        <div class="w-16 h-16 bg-[#2639ED] rounded-[50%]"></div>
+                        <div class="w-16 h-16 bg-[#E7F0FC] rounded-[50%]"></div>
+                        <div class="w-16 h-16 bg-[#E7F0FC] rounded-[50%]"></div>
+                        <div class="w-16 h-16 bg-[#E7F0FC] rounded-[50%]"></div>
+                        <div class="w-16 h-16 bg-[#E7F0FC] rounded-[50%]"></div>
+                        
+                    </div>
                 </div>
-            
-            
-                <div class="relative w-358 h-358">
+                <div class="pt-71 lg:pt-0 relative w-350  md:w-435 md:col-span-2 lg:col-span-1 md:justify-self-center  lg:w-358 lg:h-358">
                     <img src="./images/img-happy-client/Group 71.png" alt="" class="w-full h-full object-cover">
                     <div style="z-index: -1;" class="absolute top-117 left-6 w-183 h-183">
                         <img src="./images/img-happy-client/Ellipse 93.png" alt="">
@@ -344,52 +407,47 @@
             </div>
         </div>
         <!-- Newsletter -->
-        <div class="max-w-[1200px] mx-auto">
-            <div class="flex relative items-center w-[1197px] h-[292px] bg-[#F4F9FF] rounded-[75px]">
-                <div class="ml-88">
-                    <p class="text-lg font-bold mb-1">Subscribe Newsletter</p>
-                    <span class="text-tgray">I will update good news and promotion service not spam</span>
-                </div>
-                <div class="flex items-center justify-center absolute top-0 right-0 w-532 h-292">
-                    <img src="./images/img-news-letter/Rectangle 31.png"
-                    alt=""
-                    class="w-full h-full object-contain">
-                    <div style="z-index: -1;" class="absolute w-178 top-0 -mt-42 right-0">
-                        <img src="./images/img-news-letter/Dot.png" alt="">
+        <div class="container">
+            <div class="flex items-center justify-center">
+                <div class="flex relative items-center h-[145px] w-[1140px] lg:h-[292px] bg-[#F4F9FF] rounded-[75px]">
+                    <div class="ml-52 lg:ml-88 w-[250px] lg:w-full">
+                        <p class="text-2xl lg:text-lg font-bold mb-1">Subscribe Newsletter</p>
+                        <span class="text-sm lg:text-base text-tgray ">I will update good news and promotion service not spam</span>
                     </div>
-                    <div class="flex items-center absolute mr-183 w-480 h-82 bg-white rounded-[60px] border border-[#F1F1F1] shadow-md">
-                       
-                        <span class="ml-30 text-[#959595] text-base">Enter your email address..</span>
-                        <div class="flex items-center justify-center w-188 h-60 bg-[#2639ED] rounded-[60px] ml-63">
-                            <p class="text-white text-base font-semibold">Contact now</p>
+                    <div class="flex items-center justify-center absolute top-0 right-0 w-245 lg:w-533 lg:h-292">
+                        <img src="./images/img-news-letter/Rectangle 31.png"
+                        alt=""
+                        class="w-full h-full object-contain hidden lg:block">
+                        <div style="z-index: -1;" class="absolute w-178 top-0 -mt-42 right-0">
+                            <img src="./images/img-news-letter/Dot.png" alt="">
                         </div>
-                        
+                        <div class="flex items-center absolute mr-[50%] mt-350 lg:mt-0 lg:mr-160 w-350 md:w-480 h-60 lg:h-82 bg-white rounded-[60px] border border-[#F1F1F1] shadow-md">
+                           
+                            <span class="text-xs ml-30 text-[#959595] lg:text-base">Enter your email address..</span>
+                            <div class="flex items-center justify-center w-188 h-60 bg-[#2639ED] rounded-[60px] md:ml-120 ml-63">
+                                <p class="text-white text-base font-semibold">Contact now</p>
+                            </div> 
+                        </div>
                     </div>
-                    
                 </div>
-                
+            </div>
+            <div class="hidden lg:block w-178 h-178 -mt-150 mb-106">
+                <img src="./images/img-news-letter/Rectangle 32.png" alt="">
             </div>
         </div>
-        <div class="w-178 h-178 -mt-150 ml-32 mb-106">
-            <img src="./images/img-news-letter/Rectangle 32.png" alt="">
-        </div>
 
-        <div class="max-w-[1200px] mx-auto h-[1px] bg-[#E4E4E4] mb-63"></div>
+        <div class="container mt-120 lg:mt-0 h-[1px] bg-[#E4E4E4] mb-63"></div>
 
         <!-- Footer -->
-        <div class="max-w-[1200px] mx-auto flex mb-30">
-            <div>
+        <div class="container pl-5 lg:pl-0 flex flex-col md:grid md:grid-cols-2 gap-7 lg:grid lg:grid-cols-16 mb-30">
+            <div class="md:col-span-1 lg:col-span-6">
                 <h4 class="text-2xl">A+ Studio</h4>
                 <div class="w-270 mt-6">
                     <span class="text-sm text-tgray ">Leading digital agency with solid design and development expertise. We build readymade websites, mobile applications, and elaborate online business services.</span>
                 </div>
-                <div class="flex gap-4 mt-10">
-                    <img src="./images/img-footer/icon-fb.png" alt="">
-                    <img src="./images/img-footer/icon-twitter.png" alt="">
-                    <img src="./images/img-footer/icon-in.png" alt="">
-                </div>
+                
             </div>
-            <div class="ml-191">
+            <div class="md:grid-col-span-1 lg:col-span-3 ">
                 <p class="text-xl font-semibold">What We Do</p>
                 <div class="mt-6 w-150">
                     <p class="text-sm text- py-1">Web Design</p>
@@ -398,7 +456,7 @@
                     <p class="text-sm text- py-1">Market Analysis Project</p>
                 </div>
             </div>
-            <div class="ml-150">
+            <div class=" md:grid-col-span-1 lg:col-span-3">
                 <p class="text-xl font-semibold">Company</p>
                 <div class="mt-6 w-109">
                     <p class="text-sm text- py-1">About Us</p>
@@ -406,7 +464,7 @@
                     <p class="text-sm text- py-1">Become Investor</p>
                 </div>
             </div>
-            <div class="ml-120">
+            <div class=" md:grid-col-span-1 lg:col-span-2 ">
                 <p class="text-xl font-semibold">Support</p>
                 <div class="mt-6">
 
@@ -415,7 +473,7 @@
                     <p class="text-sm text- py-1">Business</p>
                 </div>
             </div>
-            <div class="ml-106">
+            <div class=" md:grid-col-span-1  lg:col-span-2">
                 <p class="text-xl font-semibold">Contact</p>
                 <div class="mt-6">
                     <p class="text-sm text- py-1">WhatApp</p>
@@ -423,12 +481,24 @@
                 </div>
             </div>
         </div>
+        <div class=" container flex justify-center lg:justify-start gap-4 mt-10 mb-10">
+            <img src="./images/img-footer/icon-fb.png" alt="">
+            <img src="./images/img-footer/icon-twitter.png" alt="">
+            <img src="./images/img-footer/icon-in.png" alt="">
+        </div>
 
-        <div class="max-w-[1200px] mx-auto h-[1px] bg-[#E4E4E4] text-center">
+        <div class="container  h-[1px] bg-[#E4E4E4] text-center">
         </div>
         <div class="mt-17 text-center">
             <span class="text-[#A4A4A4] text-sm">Copyright © 2022 Avi Yansah</span>
         </div>
     </div>
+    <script>
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+        });
+    </script>
 </body>
 </html>
